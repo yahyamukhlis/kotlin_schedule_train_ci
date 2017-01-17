@@ -1,0 +1,7 @@
+#
+# Build configuration for Circle CI
+#
+
+general:
+  artifacts:
+    - /home/ubuntu/kotlin_schedule_train_ci/app/build/outputs/apk/
