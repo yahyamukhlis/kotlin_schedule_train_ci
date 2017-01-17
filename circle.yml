@@ -4,4 +4,4 @@
 test:
   override:
     - ./gradlew assemble
-    - cp -r kotlin_schedule_train_ci/app/build/outputs/apk $CIRCLE_ARTIFACTS
+    - cp -r kotlin_schedule_train_ci/build/outputs $CIRCLE_ARTIFACTS
