@@ -19,6 +19,7 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".debug"
         }
         release {
             minifyEnabled false
@@ -36,7 +37,7 @@ android {
     }
 }
 
-configurations.all{
+configurations.all {
     resolutionStrategy.force 'junit:junit:4.12'
 }
 

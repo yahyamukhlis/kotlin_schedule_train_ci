@@ -8,4 +8,4 @@ general:
 test:
   override:
     - ./gradlew assemble
-    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+#    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
