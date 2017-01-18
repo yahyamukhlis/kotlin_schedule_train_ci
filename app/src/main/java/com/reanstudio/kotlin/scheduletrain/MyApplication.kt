@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
+import timber.log.Timber
 
 /**
  * Created by yahyamukhlis on 1/17/17.
@@ -20,6 +21,20 @@ class MyApplication : MultiDexApplication() {
         super.onCreate()
 
         initializeStetho()
+
+        initializeTimber()
+    }
+
+    private fun initializeTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(object: Timber.DebugTree() {
+                override fun createStackElementTag(element: StackTraceElement?): String {
+                    return super.createStackElementTag(element) + ":" + element?.lineNumber
+                }
+            })
+        } else {
+            Timber.plant(CrashReportingTree())
+        }
     }
 
     private fun initializeStetho() {
