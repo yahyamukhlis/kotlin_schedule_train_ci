@@ -26,20 +26,14 @@ class MyApplication : MultiDexApplication() {
     }
 
     private fun initializeTimber() {
-        if (BuildConfig.DEBUG) {
-            Timber.plant(object: Timber.DebugTree() {
-                override fun createStackElementTag(element: StackTraceElement?): String {
-                    return super.createStackElementTag(element) + ":" + element?.lineNumber
-                }
-            })
-        } else {
-            Timber.plant(CrashReportingTree())
-        }
+        Timber.plant(object : Timber.DebugTree() {
+            override fun createStackElementTag(element: StackTraceElement?): String {
+                return super.createStackElementTag(element) + ":" + element?.lineNumber
+            }
+        })
     }
 
     private fun initializeStetho() {
-        if (BuildConfig.DEBUG) {
-            Stetho.initializeWithDefaults(this)
-        }
+        Stetho.initializeWithDefaults(this)
     }
 }
