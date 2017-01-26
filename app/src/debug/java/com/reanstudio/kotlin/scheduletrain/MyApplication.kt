@@ -4,13 +4,19 @@ import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import com.facebook.stetho.Stetho
+import com.reanstudio.kotlin.scheduletrain.di.component.DaggerScheduleTrainComponent
+import com.reanstudio.kotlin.scheduletrain.di.component.ScheduleTrainComponent
+import com.reanstudio.kotlin.scheduletrain.di.module.ScheduleTrainModule
 import timber.log.Timber
 
 /**
  * Created by yahyamukhlis on 1/17/17.
  */
-
 class MyApplication : MultiDexApplication() {
+
+    companion object {
+        lateinit var scheduleTrainComponent: ScheduleTrainComponent
+    }
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -23,6 +29,8 @@ class MyApplication : MultiDexApplication() {
         initializeStetho()
 
         initializeTimber()
+
+        initializeDagger()
     }
 
     private fun initializeTimber() {
@@ -35,5 +43,11 @@ class MyApplication : MultiDexApplication() {
 
     private fun initializeStetho() {
         Stetho.initializeWithDefaults(this)
+    }
+
+    private fun initializeDagger() {
+        scheduleTrainComponent = DaggerScheduleTrainComponent.builder()
+                .scheduleTrainModule(ScheduleTrainModule())
+                .build()
     }
 }

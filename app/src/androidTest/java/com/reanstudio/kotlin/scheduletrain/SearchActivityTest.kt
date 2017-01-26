@@ -11,16 +11,17 @@ import android.support.test.runner.AndroidJUnit4
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.espresso.matcher.ViewMatchers.withText
+import com.reanstudio.kotlin.scheduletrain.search.SearchActivity
 
 /**
  * Created by yahyamukhlis on 1/17/17.
  */
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityTest {
+class SearchActivityTest {
 
     @Rule @JvmField
-    var main = ActivityTestRule(MainActivity::class.java)
+    var main = ActivityTestRule(SearchActivity::class.java)
 
     @Test
     fun showMainScreen() {
